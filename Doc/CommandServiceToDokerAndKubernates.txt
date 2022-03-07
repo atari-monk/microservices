@@ -1,0 +1,6 @@
+0. Instal Docker Desktop, login, get Platform image to contiune form where left.
+0a. Get DockerFile in proj, check dll name.
+1. command: docker build -t kmazanek/commandservice .
+2. command: docker push kmazanek/commandservice
+3. (this shoud be checked before push)
+command: docker run -p 8080:80 kmazanek/commandservice
