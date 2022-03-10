@@ -63,7 +63,6 @@ Plik z jego config ingress-srv.yaml definiuje routing z acme.com
 Otwórz plik
 C:\Windows\System32\drivers\etc\hosts
 w edytorze
-
 dodać wpis
 127.0.0.1 acme.com
 
@@ -71,9 +70,33 @@ kubectl apply -f ingress-srv.yaml
 
 Test routes in insomnia
 wpisać acme.com w Ip
-nie działa
+fail
 127.0.0.3 acme.com
-nie działa
+fail
 w admin powerShell
 NET STOP IISADMIN
-nie działa
+fail
+Wyłączenie IIS w funkcjach Win10
+ok
+
+3.5 SQL container:
+
+kubectl get storageclass
+
+There is 3 storage concepts:
+
+1. Persistent Volume Claim (Main for dev)
+
+2. Persistent Volume
+
+3. Storage Class
+
+Make file local-pvc.yaml; local Persistent Volume Claim
+
+BTW cd, ls (cli commands) :)
+
+kubectl apply -f local-pvc.yaml
+
+kubectl get pvc
+
+3.6 Add Kubernates secret (password should not be in configs)
