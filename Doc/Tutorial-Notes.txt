@@ -100,3 +100,46 @@ kubectl apply -f local-pvc.yaml
 kubectl get pvc
 
 3.6 Add Kubernates secret (password should not be in configs)
+
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55wOrd!"
+
+3.7 deployment file for mssql
+
+Create file
+
+kubectl apply -f mssql-plat-depl.yaml
+
+kubectl get services
+
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+commands-clusterip-srv    ClusterIP      10.103.201.18   <none>        80/TCP           3d7h
+kubernetes                ClusterIP      10.96.0.1       <none>        443/TCP          4d6h
+mssql-clusterip-srv       ClusterIP      10.103.8.210    <none>        1433/TCP         99s
+mssql-loadbalancer        LoadBalancer   10.107.58.187   localhost     1433:32054/TCP   73s
+platformnpservice-srv     NodePort       10.98.178.139   <none>        80:31773/TCP     3d6h
+platforms-clusterip-srv   ClusterIP      10.111.54.239   <none>        80/TCP           3d8h
+
+kubectl get pods
+
+NAME                              READY   STATUS             RESTARTS      AGE 
+commands-depl-6d65567cf6-69clx    1/1     Running            5 (37m ago)   3d8h
+mssql-depl-75d77f44fb-6mgsl       0/1     ImagePullBackOff   0             11m 
+platforms-depl-7889987db5-dbmg2   1/1     Running            5 (37m ago)   3d7h
+
+ImagePullBackOff fail
+
+kubectl describe pod mssql-depl-75d77f44fb-6mgsl
+
+this logs helped
+there was mistaken letter in 
+mcr.micorsoft.com/mssql/server:2017-latest
+mcr.microsoft.com/mssql/server:2017-latest
+
+kubectl get pods
+
+NAME                              READY   STATUS    RESTARTS      AGE
+commands-depl-6d65567cf6-69clx    1/1     Running   5 (70m ago)   3d8h
+mssql-depl-856b8c48fd-bz4xq       1/1     Running   0             2m9s
+platforms-depl-7889987db5-dbmg2   1/1     Running   5 (70m ago)   3d8h
+
+:)
