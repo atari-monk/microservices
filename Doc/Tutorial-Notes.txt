@@ -143,3 +143,19 @@ mssql-depl-856b8c48fd-bz4xq       1/1     Running   0             2m9s
 platforms-depl-7889987db5-dbmg2   1/1     Running   5 (70m ago)   3d8h
 
 :)
+
+Check with ManagmentStudio:
+Server name: localhost, 1433
+Authentication: SQl Server Authentication
+password: from secret
+
+It connects, no db.
+
+Set PlatformService to use SqlServer for peoduction
+
+1. Add connectionString for production
+then add init in program setup
+test 
+dotnet run --project .\PlatformService\
+should run inMem db
+ctrl+c to close
