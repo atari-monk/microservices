@@ -19,19 +19,23 @@ public class PlatformRepo
 
     public IEnumerable<Platform> GetAll()
     {
+        ArgumentNullException.ThrowIfNull(context.Platforms);
         return context.Platforms.ToList();
     }
     
     public Platform GetById(int id)
     {
-        return context.Platforms.FirstOrDefault(
+        ArgumentNullException.ThrowIfNull(context.Platforms);
+        var plat =  context.Platforms.FirstOrDefault(
             p => p.Id == id);
+        ArgumentNullException.ThrowIfNull(plat);
+        return plat;
     }
 
     public void Create(Platform plat)
     {
-        if(plat == null)
-            throw new ArgumentNullException(nameof(plat));
+        ArgumentNullException.ThrowIfNull(plat);
+        ArgumentNullException.ThrowIfNull(context.Platforms);
         context.Platforms.Add(plat);
     }
 }

@@ -151,11 +151,54 @@ password: from secret
 
 It connects, no db.
 
-Set PlatformService to use SqlServer for peoduction
+4.0 Set PlatformService to use SqlServer for production
 
-1. Add connectionString for production
+4.1 Add connectionString for production
 then add init in program setup
 test 
 dotnet run --project .\PlatformService\
 should run inMem db
 ctrl+c to close
+
+4.2
+Update PrepDb to check if production
+
+4.3
+Add migrations
+
+dotnet ef migrations add initialmigration
+
+dotnet tool update --global dotnet-ef
+
+Migrations not supported for inMem
+So disable check if in prod to trick tool you use SqlServer
+disable PrepDb
+Move connectionString to dev.json and change it to local instead of kubernetes use localhost
+dotnet ef migrations add initialmigration
+Wycofaj zmiany aby używać sprawdzania produkcji i kubernetes
+
+5.0
+Push changes to Docker and Kubernetes
+cd PlatformService
+ls
+see Dockerfile
+build
+docker build -t kmazanek/platformservice .
+docker push kmazanek/platformservice
+docker login -u "kmazanek" -p "hasło"
+albo inna metoda logowania
+docker push kmazanek/platformservice
+
+kubectl get deployments
+kubectl rollout restart deployment platforms-depl
+in case of some error
+kubectl delete deployment platforms-depl
+kubectl get pods
+docker build -t kmazanek/platformservice .
+cd K8S
+kubectl apply -f platforms-depl.yaml
+Check logs in DockerDesktop
+and db in SqlServerManagment
+There is platformsdb database so ok 
+there are seeded data
+Go to insomnia using K8S
