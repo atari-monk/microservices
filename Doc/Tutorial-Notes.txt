@@ -202,3 +202,5 @@ and db in SqlServerManagment
 There is platformsdb database so ok 
 there are seeded data
 Go to insomnia using K8S
+
+Code Db layer of commandservice

@@ -9,7 +9,7 @@ public class Platform
     public int Id { get; set; }
 
     [Required]
-    public int ExternalID { get; set; }
+    public int ExternalId { get; set; }
 
     [Required]
     public string? Name { get; set; }
