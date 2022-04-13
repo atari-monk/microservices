@@ -207,3 +207,25 @@ Code Db layer of commandservice
 Add Dtos
 Add mappings
 Add services and web api controllers for cmd service
+
+Add RabbitMQ to kubernetes (dev style depl):
+
+create yaml file
+check STATUS
+kubectl get deploments
+kubectl get pods
+
+apply yaml:
+kubectl apply -f rabbitmq-depl.yaml
+check:
+kubectl get services
+
+run rabbitmq app in browser:
+http://localhost:15672/
+l:guest, p: guest
+
+Add rabbitmq to PlatformService:
+add package
+dotnet add package RabbitMQ.Client
+
+setup configs
