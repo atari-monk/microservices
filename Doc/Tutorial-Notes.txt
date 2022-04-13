@@ -204,3 +204,6 @@ there are seeded data
 Go to insomnia using K8S
 
 Code Db layer of commandservice
+Add Dtos
+Add mappings
+Add services and web api controllers for cmd service
