@@ -229,3 +229,7 @@ add package
 dotnet add package RabbitMQ.Client
 
 setup configs
+
+add msg bus Dto
+
+code for msg bus
