@@ -20,7 +20,7 @@ public class MessageBusClient :
         var factory = new ConnectionFactory()
         {
             HostName = config["RabbitMQHost"]
-            , Port = int.Parse(config["RabbitMQHost"])
+            , Port = int.Parse(config["RabbitMQPort"])
         };
         try
         {
