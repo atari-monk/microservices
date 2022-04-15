@@ -36,6 +36,12 @@ public class CommandRepo
       context.Platforms.Add(plat);
     }
 
+    public bool ExternalPlatformExists(int externalPlatformId)
+    {
+      ArgumentNullException.ThrowIfNull(context.Platforms);
+      return context.Platforms.Any(p => p.ExternalId == externalPlatformId);
+    }
+
     public IEnumerable<Platform> GetAllPlatforms()
     {
       ArgumentNullException.ThrowIfNull(context.Platforms);

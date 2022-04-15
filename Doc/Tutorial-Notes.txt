@@ -243,3 +243,9 @@ dotnet add package RabbitMQ.Client
 set configs
 
 add dtos
+
+add mapping
+
+add exits method to repo
+
+add EventProcessing
