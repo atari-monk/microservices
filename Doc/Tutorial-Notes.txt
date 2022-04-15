@@ -233,3 +233,13 @@ setup configs
 add msg bus Dto
 
 code for msg bus
+
+send async msg to msg bus from platform
+
+add msg bus to command service:
+
+dotnet add package RabbitMQ.Client
+
+set configs
+
+add dtos
