@@ -271,4 +271,21 @@ kubectl rollout restart deployment platforms-depl
 kubectl get pods
 
 start http://localhost:15672/
+docker desktop, platform service log
+insomnia (k8S ngix platforms)
+get platforms
+create platform 
+check if msg bus works
 
+restart cmd service from cmd line
+
+kubectl get deployment
+kubectl rollout restart deployment commands-depl
+kubectl get pods
+
+do check for commands as was done for platforms
+
+add endpoints for cmd service
+test them
+
+Next is gRPC
