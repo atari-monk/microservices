@@ -249,3 +249,26 @@ add mapping
 add exits method to repo
 
 add EventProcessing
+
+add event listener
+
+Push new containers to doker/kubernetes:
+
+open proj folder
+
+docker build -t kmazanek/platformservice .
+docker push kmazanek/platformservice
+
+open proj folder
+
+docker build -t kmazanek/commandservice .
+docker push kmazanek/commandservice
+
+check on docker hub if image is pushed now
+
+kubectl get deployment
+kubectl rollout restart deployment platforms-depl
+kubectl get pods
+
+start http://localhost:15672/
+
