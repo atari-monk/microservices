@@ -289,3 +289,18 @@ add endpoints for cmd service
 test them
 
 Next is gRPC
+
+google remote procedure call (public domain as kubernetes is)
+http/2 protocol to transport binary msgs (https/tls)
+Protobuf file speciffy contract on both endpoints
+Multi language supported
+service to service
+
+this grpc doesnt use https 
+it needs new port for this reason
+define in k8S
+kubectl apply -f platforms-depl.yaml
+//check ip 666 added
+kubectl get services
+
+add endpoints in platformnpservice prod config
