@@ -304,3 +304,13 @@ kubectl apply -f platforms-depl.yaml
 kubectl get services
 
 add endpoints in platformnpservice prod config
+
+add nuget to platformservice (server):
+dotnet add package Grpc.AspNetCore
+
+add nuget to commandservice (client):
+dotnet add package Grpc.Tools
+dotnet add package Grpc.Net.Client
+dotnet add package Google.Protobuf
+
+Define protofile (defines gRPC)
