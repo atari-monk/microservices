@@ -314,3 +314,17 @@ dotnet add package Grpc.Net.Client
 dotnet add package Google.Protobuf
 
 Define protofile (defines gRPC)
+Define mapping for grpc model
+Add endpoint and file in program config (for gRPC)
+
+Add grpc client in commandservice
+add urls to configs (local, prod)
+Add Protos file
+Add protos file path to proj file
+dotnet build
+write client
+register stuf in di services
+add automapper mappings
+
+Add PrepDb class that uses grpc services
+to seed db with platforms added before events on msg bus worked
