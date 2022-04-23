@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using CommandsService.Models;
 
 namespace CommandsService.Data;
@@ -60,10 +61,17 @@ public class CommandRepo
 
     public IEnumerable<Command> GetCommandsForPlatform(int platformId)
     {
-      ArgumentNullException.ThrowIfNull(context.Commands);
-      return context.Commands
+        Func<Command, string> orderBy = c => 
+        {
+            ArgumentNullException.ThrowIfNull(c.Platform);
+            var name = c.Platform.Name;
+            ArgumentNullException.ThrowIfNull(name);
+            return name;
+        };
+        ArgumentNullException.ThrowIfNull(context.Commands);
+        return context.Commands
         .Where(c => c.PlatformId == platformId)
-        .OrderBy(c => c.Platform.Name);
+        .OrderBy(orderBy);
     }
 
     public bool PlatformExists(int platformId)
