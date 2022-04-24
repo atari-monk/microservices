@@ -328,3 +328,54 @@ add automapper mappings
 
 Add PrepDb class that uses grpc services
 to seed db with platforms added before events on msg bus worked
+run it in program
+
+Test grpc:
+cd PlatformService
+dotnet run
+Insomnia 
+local dev
+Get All platform
+
+Run commandservice
+Get All platform
+works
+Add platform in PlatformService
+It shows in commandservice via async msg bus
+works.
+
+Package that to kubernetes after changes (grpc)
+and test it:
+
+cd PlatformService
+ls (to see dockerFile)
+docker build -t kmazanek/platformservice .
+docker push kmazanek/platformservice
+
+cd CommandService
+ls (to see dockerFile)
+docker build -t kmazanek/commandservice .
+docker push kmazanek/commandservice
+
+check dokerhub if img are pushed
+
+restart kuber:
+kubectl get deployment
+kubectl rollout restart deployment platforms-depl
+kubectl get pods
+
+check logs in DockerDesktop (sort by start time)
+
+in Insomnia (nginx)
+PlatformService
+get all platformsdb
+
+kubectl rollout restart deployment commands-depl
+kubectl get pods
+
+in Insomnia (nginx)
+CommandService
+get all platformsdb
+
+I use http in cmmd grpc config and it works now :)
+Finished tutorial.
